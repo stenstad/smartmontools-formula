@@ -1,0 +1,4 @@
+# ``nullmailer`` formula configuration:
+
+smartmontools:
+  email: admin@example.com

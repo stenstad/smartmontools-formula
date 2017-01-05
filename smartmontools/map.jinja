@@ -1,0 +1,19 @@
+{% set os_map = salt['grains.filter_by']({
+  'Debian': {
+    'pkg': 'smartmontools',
+    'service': 'smartd',
+  },
+}, merge=salt['pillar.get']('smartmontools:lookup')) %}
+
+
+{% set default_settings = {
+  'smartmontools': {
+    'health': True,
+    'email': False,
+  },
+} %}
+
+{% do default_settings.smartmontools.update(os_map) %}
+
+{% set smartmontools_settings = salt['pillar.get']('smartmontools', default=default_settings.smartmontools, merge=True) %}
+

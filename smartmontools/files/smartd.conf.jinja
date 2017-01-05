@@ -1,0 +1,2 @@
+{%- from "smartmontools/map.jinja" import smartmontools_settings with context -%}
+DEVICESCAN {% if smartmontools_settings.health %}-H {% endif %}-l error -l selftest -f -s (O/../../5/11|L/../../5/13|C/../../5/15) -m root {% if smartmontools_settings.email %}-m {{ smartmontools_settings.email }} {% endif %}-M exec /usr/share/smartmontools/smartd-runner
