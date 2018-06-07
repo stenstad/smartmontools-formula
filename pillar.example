@@ -1,4 +1,8 @@
-# ``nullmailer`` formula configuration:
 
+# minimal configuration
 smartmontools:
   email: admin@example.com
+  
+  test_email: True # to send test email
+
+# see defaults.yaml for more options

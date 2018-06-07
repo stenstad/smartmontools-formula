@@ -1,2 +1,7 @@
-{%- from "smartmontools/map.jinja" import smartmontools_settings with context -%}
-DEVICESCAN {% if smartmontools_settings.health %}-H {% endif %}-l error -l selftest -f -s (O/../../5/11|L/../../5/13|C/../../5/15) -m root {% if smartmontools_settings.email %}-m {{ smartmontools_settings.email }} {% endif %}-M exec /usr/share/smartmontools/smartd-runner
+#
+# DO NOT EDIT
+#
+# Managed by Salt
+#
+
+DEVICESCAN {% if health %}-H {% endif %}-l error -l selftest -f -s ({{ test_1_type }}/{{ test_1_mon }}/{{ test_1_day }}/{{ test_1_w_day }}/{{ test_1_hour }}|{{ test_2_type }}/{{ test_2_mon }}/{{ test_2_day }}/{{ test_2_w_day }}/{{ test_2_hour }}|{{ test_3_type }}/{{ test_3_mon }}/{{ test_3_day }}/{{ test_3_w_day }}/{{ test_3_hour }}) -m root {% if email %}-m {{ email }} {% endif %}-M exec /usr/share/smartmontools/smartd-runner {% if test_email %} -M test {% endif %}

@@ -1,0 +1,28 @@
+smartmontools:
+  pkg: smartmontools
+  service: smartd
+  config: /etc/smartd.conf
+  defaults_start: /etc/default/smartmontools
+  email: False
+  health: True
+  test_email: False  # send test email on restart
+  test_1:
+    type: O     # O - Offline Immediate Test (ATA only)
+    mon: '..'   # month of the year, 01-12 or ".." every month
+    day: '..'   # day of the month, 01-31 or ".." every day 
+    w_day: '.'  # day of the week, 1-7 or "." every
+    hour: '11'  # hour of the day, 00-23
+  test_2:
+    type: L     # L - Long Self-Test
+    mon: '..'   # month of the year, 01-12 or ".." every month
+    day: '..'   # day of the month, 01-31 or ".." every day 
+    w_day: '.'  # day of the week, 1-7 or "." every
+    hour: '13'  # hour of the day, 00-23
+  test_3:
+    type: C     # C - Conveyance  Self-Test (ATA only)
+    mon: '..'   # month of the year, 01-12 or ".." every month
+    day: '..'   # day of the month, 01-31 or ".." every day 
+    w_day: '.'  # day of the week, 1-7 or "." every
+    hour: '15'  # hour of the day, 00-23
+
+

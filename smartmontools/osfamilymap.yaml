@@ -1,0 +1,4 @@
+Debian:
+  pkg: smartmontools
+  service: smartd
+  config: /etc/smartd.conf
