@@ -1,19 +1,10 @@
-{% set os_map = salt['grains.filter_by']({
-  'Debian': {
-    'pkg': 'smartmontools',
-    'service': 'smartd',
-  },
-}, merge=salt['pillar.get']('smartmontools:lookup')) %}
+{% import_yaml "smartmontools/defaults.yaml" as defaults %}
+{% import_yaml "smartmontools/osfamilymap.yaml" as osfamilymap %}
 
+{% set map = salt['grains.filter_by'](defaults,
 
-{% set default_settings = {
-  'smartmontools': {
-    'health': True,
-    'email': False,
-  },
-} %}
+  merge=salt['grains.filter_by']( osfamilymap, grain='os_family',
+    merge=salt['pillar.get']('smartmontools', {}), ),
+base='smartmontools') %}
 
-{% do default_settings.smartmontools.update(os_map) %}
-
-{% set smartmontools_settings = salt['pillar.get']('smartmontools', default=default_settings.smartmontools, merge=True) %}
 
